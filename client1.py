@@ -3,6 +3,12 @@ import cv2
 import numpy as np
 from io import BytesIO
 import json
+import pprint
+pp = pprint.PrettyPrinter(indent=4)
+from huffmann_coding import encodeHuffman, getCompressionRatio
+
+BUFFER_SIZE = 1024
+
 
 size = (640, 480)
 def takeImageFromWebcam():
@@ -37,28 +43,45 @@ try:
     # message = 'This is a message from the client'.encode()
     # image = cv2.imread("./Nike-By-You.jpg", 0)
     image = takeImageFromWebcam()
-
     shape = image.shape
-    message = SimpleEncode(image).encode()
-    print(shape)
-    print(len(message))
-    # print(f'Sending data to the server: {message.decode()}')
-    # sock.sendall(message)
+
+    encoded_string, image_string, freq, huff_table = encodeHuffman(image)
+    message_image = encoded_string.encode()
+    message_table = json.dumps(huff_table).encode()
+    print("len(message_image) = ",len(message_image))
+    print("len(message_table) = ",len(message_table))
 
     curr = 0
-    buffersize = 1024
 
-    while curr <= len(message):
-        temp = message[curr:curr+buffersize]
-        curr += buffersize
+    while curr <= len(message_image):
+        temp = message_image[curr:curr+BUFFER_SIZE]
+        curr += BUFFER_SIZE
         sock.send(temp)
-        response = sock.recv(buffersize)
+        response = sock.recv(BUFFER_SIZE)
         print(f'Received {response.decode()}')
 
-    print("Sending the end message...")
-    sock.send("~END".encode())
-    response = sock.recv(buffersize)
-    print(f'The very last ACK: {response.decode()}')
+    print("Sent the Compressed Huffman Image...")
+    sock.send("=)".encode())
+    response = sock.recv(BUFFER_SIZE)
+    print(f'The last ACK for Image: {response.decode()}')
+
+    curr = 0
+    while curr <= len(message_table):
+        temp = message_table[curr:curr+BUFFER_SIZE]
+        curr += BUFFER_SIZE
+        sock.send(temp)
+        response = sock.recv(BUFFER_SIZE)
+        print(f'Received {response.decode()}')
+
+    print("Sent the Huffman Table...")
+    sock.send("^_^".encode())
+    response = sock.recv(BUFFER_SIZE)
+    print(f'The last ACK for table : {response.decode()}')
+
+    print("Sending delimiting packet for ending transmission...")
+    sock.send("*_*".encode())
+    response = sock.recv(BUFFER_SIZE)
+    print(f'The last ACK for the transmission : {response.decode()}')
 
 finally:
     # clean up the socket

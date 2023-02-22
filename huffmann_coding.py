@@ -147,6 +147,12 @@ if __name__=="__main__":
 
     encoded_string, image_string, freq, huff_table = encodeHuffman(image)
     print("Compression ratio: ", getCompressionRatio(huff_table, freq, image_string))
+    print(type(str(huff_table)))
+
+    huff_table_str = json.dumps(huff_table)
+    huff_table_back = json.loads(huff_table_str)
+    print(huff_table_back)
+    print(type(huff_table_back))
 
     # with open(IMAGE_DOC_PATH, 'w') as writefile:
     #     writefile.write(image_string)
