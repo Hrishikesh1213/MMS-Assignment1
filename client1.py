@@ -5,7 +5,9 @@ from io import BytesIO
 import json
 import pprint
 pp = pprint.PrettyPrinter(indent=4)
-from huffmann_coding import encodeHuffman, getCompressionRatio
+from huffmann_coding import encodeHuffman, getCompressionRatio, decodeHuffman
+from datetime import datetime  
+import time  
 
 BUFFER_SIZE = 1024
 

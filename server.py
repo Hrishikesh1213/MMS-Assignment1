@@ -5,8 +5,29 @@ from io import BytesIO
 import json
 import pprint
 pp = pprint.PrettyPrinter(indent=4)
-from huffmann_coding import encodeHuffman, getCompressionRatio
+from huffmann_coding import encodeHuffman, getCompressionRatio, decodeHuffman
+from datetime import datetime  
+import time  
 
+BUFFER_SIZE = 1024
+DOWNLOADS_PATH = './server_downloads'
+
+def getImageTimestamp():
+    timestamp = time.time()
+    date_time = datetime.fromtimestamp(timestamp)
+    str_date_time = date_time.strftime("%H:%M:%S")
+    return str(str_date_time).replace(":","")
+
+def saveImageToDownloads(image):
+    imagename = getImageTimestamp() +".png"
+    filepath = DOWNLOADS_PATH + "/" + imagename
+    cv2.imwrite(filepath, image)
+    print("Saved ", imagename, " to server downloads")
+
+def showImage(image):
+    cv2.imshow("image", image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 def SimpleEncode(ndarray):
     return json.dumps(ndarray.tolist())
@@ -39,12 +60,10 @@ while True:
 
         recvString = ""
         ack_count = 1
-        buffersize = 1024
-
 
         # receive the data in small chunks and print it
         while True:
-            data = connection.recv(1024)
+            data = connection.recv(BUFFER_SIZE)
             # print(f'Received data from the client: {data.decode()}')
             if data.decode() != "=)" and data.decode() != "^_^" and data.decode() != "*_*":
                 recvString += data.decode()
@@ -71,6 +90,12 @@ while True:
 
         huff_table = json.loads(table_string)
         pp.pprint(huff_table)
+
+        decoded_string = decodeHuffman(image_string, huff_table)
+        decoded_image = SimpleDecode(decoded_string)
+        # showImage(decoded_image)
+        saveImageToDownloads(decoded_image)
+
     finally:
         # clean up the connection
         connection.close()
