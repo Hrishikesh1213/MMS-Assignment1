@@ -139,23 +139,15 @@ def encodeHuffman(image):
     return (encoded_string, string_without_line_breaks, freq, huff.code)
 
 def decodeHuffman(encoded_string, symbol_table):
-    # Reverse the symbol table dictionary
     reversed_symbol_table = {v: k for k, v in symbol_table.items()}
-    # Initialize an empty string to store the decoded message
     decoded_message = ''
-    # Initialize an empty buffer
     buffer = ''
-    # Traverse the encoded string one character at a time
     for char in encoded_string:
-        # Append the character to the buffer
         buffer += char
-        # Check if the buffer matches any of the keys in the reversed symbol table dictionary
         if buffer in reversed_symbol_table:
-            # Append the corresponding symbol to the decoded message
             decoded_message += reversed_symbol_table[buffer]
-            # Reset the buffer
+            # print(reversed_symbol_table[buffer])
             buffer = ''
-    # Return the decoded message
     return decoded_message
 
 if __name__=="__main__":

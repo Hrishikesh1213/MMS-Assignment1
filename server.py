@@ -93,7 +93,7 @@ while True:
 
         decoded_string = decodeHuffman(image_string, huff_table)
         decoded_image = SimpleDecode(decoded_string)
-        # showImage(decoded_image)
+        showImage(decoded_image)
         saveImageToDownloads(decoded_image)
 
     finally:

@@ -34,10 +34,13 @@ import time
 
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
-def getImageTimestamp():
-    timestamp = time.time()
-    date_time = datetime.fromtimestamp(timestamp)
-    str_date_time = date_time.strftime("%H:%M:%S")
-    return str(str_date_time).replace(":","")
 
-print(getImageTimestamp())
+
+# def getImageTimestamp():
+#     timestamp = time.time()
+#     date_time = datetime.fromtimestamp(timestamp)
+#     str_date_time = date_time.strftime("%H:%M:%S")
+#     return str(str_date_time).replace(":","")
+
+# print(getImageTimestamp())
+
