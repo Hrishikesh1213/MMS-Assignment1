@@ -1,0 +1,118 @@
+PS C:\Users\hrish\OneDrive\Desktop\MMS Assignment 1> py ThreadServer.py  
+Starting up the server on localhost:15422
+recv the first msg--------------------------------------------------------------------------------------------------------------------------------
+Waiting for a connection...
+Accepted connection from 127.0.0.1:53979
+sending image
+                                        start sending the image
+ok
+Starting up the Image receiving server on localhost:12345
+Waiting for a connection to Image receiving server...
+Receiving the image from  127.0.0.1:53980
+recieved the image...
+recieved the table...
+No more data from 127.0.0.1:53980
+Saved  075108.png  to server downloads
+Successfully received the Image-------------------> ^_^
+[(480, 640), {'1': '000', '5': '001', '2': '01', ',': '10', '0': '1100', '3': '1101', '8': '11100', '4': '11101', '[': '11110000', ']': '11110001', '7': '1111001', '6': '111101', '9': '11111'}, '075108.png']
+                                        sending image
+start sending the image
+                                        ok
+Sending the image to localhost:12345
+len(message_image) =  3699570
+len(message_table) =  175
+Sent the Compressed Huffman Image...
+The last ACK for Image: ACK: 3614
+Sent the Huffman Table...
+The last ACK for table : ACK: 3616
+Sending delimiting packet for ending transmission...
+The last ACK for the transmission : Image and table recieved
+Successfully sent the Image-------------------> ^_^
+['ACK: 3614', 'ACK: 3616', 'extra field']
+sending image
+                                        start sending the image
+ok
+Starting up the Image receiving server on localhost:12345
+Waiting for a connection to Image receiving server...
+Receiving the image from  127.0.0.1:53983
+recieved the image...
+recieved the table...
+No more data from 127.0.0.1:53983
+Saved  075145.png  to server downloads
+Successfully received the Image-------------------> ^_^
+[(480, 640), {'2': '00', '9': '0100', '8': '0101', '[': '0110000', ']': '0110001', '6': '011001', '3': '01101', '5': '0111', ',': '10', '4': '11000', '7': '11001', '0': '1101', '1': '111'}, '075145.png']
+                                        sending image
+start sending the image
+                                        ok
+Sending the image to localhost:12345
+len(message_image) =  3845542
+len(message_table) =  173
+Sent the Compressed Huffman Image...
+The last ACK for Image: ACK: 3757
+Sent the Huffman Table...
+The last ACK for table : ACK: 3759
+Sending delimiting packet for ending transmission...
+The last ACK for the transmission : Image and table recieved
+Successfully sent the Image-------------------> ^_^
+['ACK: 3757', 'ACK: 3759', 'extra field']
+tnq
+                                        sending image
+start sending the image
+                                        ok
+Sending the image to localhost:12345
+len(message_image) =  3856148
+len(message_table) =  173
+Sent the Compressed Huffman Image...
+The last ACK for Image: ACK: 3767
+Sent the Huffman Table...
+The last ACK for table : ACK: 3769
+Sending delimiting packet for ending transmission...
+The last ACK for the transmission : Image and table recieved
+Successfully sent the Image-------------------> ^_^
+['ACK: 3767', 'ACK: 3769', 'extra field']
+tnq
+                                        sending image
+start sending the image
+                                        ok
+Sending the image to localhost:12345
+len(message_image) =  3824981
+len(message_table) =  175
+Sent the Compressed Huffman Image...
+The last ACK for Image: ACK: 3737
+Sent the Huffman Table...
+The last ACK for table : ACK: 3739
+Sending delimiting packet for ending transmission...
+The last ACK for the transmission : Image and table recieved
+Successfully sent the Image-------------------> ^_^
+['ACK: 3737', 'ACK: 3739', 'extra field']
+sending image
+                                        start sending the image
+ok
+Starting up the Image receiving server on localhost:12345
+Waiting for a connection to Image receiving server...
+Receiving the image from  127.0.0.1:53987
+recieved the image...
+recieved the table...
+No more data from 127.0.0.1:53987
+Saved  075256.png  to server downloads
+Successfully received the Image-------------------> ^_^
+[(480, 640), {'1': '00', '2': '010', '5': '0110', '6': '0111', ',': '10', '9': '1100', '8': '1101', '[': '1110000', ']': '1110001', '4': '111001', '3': '11101', '0': '11110', '7': '11111'}, '075256.png']
+                                        tnq
+sending image
+                                        start sending the image
+ok
+Starting up the Image receiving server on localhost:12345
+Waiting for a connection to Image receiving server...
+Receiving the image from  127.0.0.1:53988
+recieved the image...
+recieved the table...
+No more data from 127.0.0.1:53988
+Saved  075320.png  to server downloads
+Successfully received the Image-------------------> ^_^
+[(480, 640), {'1': '00', '2': '010', '7': '0110', '6': '0111', ',': '10', '9': '1100', '[': '1101000', ']': '1101001', '4': '110101', '3': '11011', '8': '1110', '0': '11110', '5': '11111'}, '075320.png']
+                                        Traceback (most recent call last):
+  File "C:\Users\hrish\OneDrive\Desktop\MMS Assignment 1\ThreadServer.py", line 223, in <module>
+    val = str(input())
+              ^^^^^^^
+KeyboardInterrupt
+PS C:\Users\hrish\OneDrive\Desktop\MMS Assignment 1>
